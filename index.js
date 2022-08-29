@@ -19,36 +19,49 @@ function getTeamMemberInfo(memberRole) {
     } else {
         extraInfo = 'Office Number'; 
     }
+
+    //an array of questions for user input
+    inquirer.promt([
+        {
+            message: `What is the ${memberRole}'s name? :`,
+            name: "name",
+            type: 'input',
+        },
+        {
+            message: `What is the ${memberRole}'s ID? :`,
+            name: "id",
+            type: 'input',
+        },
+        {
+            message: `What is the ${memberRole}'s email? :`,
+            name: "email",
+            type: 'input',
+        },  
+        {
+            message: `What is the ${memberRole}'s ${extraInfo}? :`,
+            name: "info",
+            type: 'input',
+        }
+    ]).then(function({name, id, email, info}) {
+        myTeam.push(helper.createNewEmployee(memberRole, name, id, email, info));
+        getEmployeeDetails();
+    });
 }
 
-// prompt user for entry
-
-
-//an array of questions for user input
-const questions = [
-
-    {
-        message: `What is the ${memberRole}'s name? :`,
-        name: "name",
-        type: 'input',
-    },
-    {
-        message: `What is the ${memberRole}'s ID? :`,
-        name: "id",
-        type: 'input',
-    },
-    {
-        message: `What is the ${memberRole}'s email? :`,
-        name: "email",
-        type: 'input',
-    },  
-    {
-        message: `What is the ${memberRole}'s ${extraInfo}? :`,
-        name: "info",
-        type: 'input',
-    },
-   
-]
+function getEmployeeDetails() {
+    inquirer.promt([{
+        message: 'Add additional team member? :',
+        name: "member_role",
+        type: 'list',
+        choices: ['Engineer', 'Intern', 'Done']
+    }]).then(function({member_role}) {
+        if(member_role === 'Done') {
+            buildTeam
+        } else {
+            getTeamMemberInfo(member_role);
+        }
+    });
+}
 
 
 // // TODO: Create a function to write README file
@@ -64,8 +77,8 @@ const questions = [
 //     })
 // }
 
-// TODO: Create a function to initialize app
-function init() {
+// TODO: Create a function to initialize app and store basic info
+function init(data) {
     inquirer
         .prompt(questions)
         .then(answers => {
@@ -79,5 +92,19 @@ function init() {
 
 // Function call to initialize app
 init();
+
+
+// // TODO: Create a function to initialize app
+// function init() {
+//     inquirer
+//         .prompt(questions)
+//         .then(answers => {
+//         // const markdownData = generateMarkdown(answers);
+//         writeToFile(answers);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
+// };
 
 
