@@ -4,7 +4,6 @@ const path = require('path');
 const helper = require('./src/helper');
 const fs = require('fs');
 
-// const generateHTML = require('./utils/generateMarkdown');
 
 let myTeam = [];
 
@@ -47,7 +46,7 @@ function getTeamMemberInfo(memberRole) {
         getEmployeeDetails();
     });
 }
-
+// additional questions and choices for inquirer prompt
 function getEmployeeDetails() {
     inquirer.prompt([{
         message: 'Add additional team member? :',
@@ -62,7 +61,7 @@ function getEmployeeDetails() {
         }
     });
 }
-
+// write to file by invoking function in helper
 function buildTeam() {
     let teamPage = helper.renderTeamHTML(myTeam);
     fs.writeFile(path.join(__dirname, 'dist', 'index.html'), teamPage, err => {
@@ -74,7 +73,7 @@ function buildTeam() {
     });
 
 }
-
+// start with manager role
 getTeamMemberInfo('Manager');
 
 

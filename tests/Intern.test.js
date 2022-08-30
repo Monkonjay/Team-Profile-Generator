@@ -1,5 +1,6 @@
 const Intern = require('../lib/Intern');
 
+// tests for intern class
 describe('Intern', () => {
     it('should create an object when initialized', () => {
         const intern = new Intern('David', '1', 'davidemp@gmail.com');

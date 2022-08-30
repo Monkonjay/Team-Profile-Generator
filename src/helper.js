@@ -1,9 +1,10 @@
+// Require Classes
 const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 
-// Helper function to create an instance of appropriate class based on the employee type.
+// Create class instance based on roles
 function addTeamMember(employee_type, name, id, email, info){
     switch (employee_type) {
         case 'Manager':
@@ -17,15 +18,14 @@ function addTeamMember(employee_type, name, id, email, info){
     }
 }
 
-// Helper function that takes in an array of `team` members and returns the generated HTML for the team.
-function renderTeamHTML(team) {
-    // Generate the HTML card for each of the team member.
-    teamCardsHTML = '';
-    for (const team_member of team) {
-        teamCardsHTML += team_member.getHTMLCard();
+ // Generate card for individual roles
+function renderTeamHTML(myTeam) {
+    employeeCard = '';
+    for (const employee of myTeam) {
+        employeeCard += employee.getHTMLCard();
     }
 
-    // Create HTML by embedding the cards HTML generated.
+    // Main template for HTML
     return `<!DOCTYPE html>
             <html lang="en">
             <head>
@@ -45,7 +45,7 @@ function renderTeamHTML(team) {
                 </div>
 
 
-                <div class="row justify-content-center">${teamCardsHTML}</div>
+                <div class="row justify-content-center">${employeeCard}</div>
                     
                 
             </body>

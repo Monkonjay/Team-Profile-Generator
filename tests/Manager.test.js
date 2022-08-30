@@ -1,5 +1,6 @@
 const Manager = require('../lib/Manager');
 
+// tests for manager class
 describe('Manager', () => {
     it('should create an object when initialized', () => {
         const manager = new Manager('David', '1', 'davidemp@gmail.com');

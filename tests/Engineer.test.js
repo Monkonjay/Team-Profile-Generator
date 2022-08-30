@@ -1,5 +1,6 @@
 const Engineer = require('../lib/Engineer');
 
+// test for engineer class
 describe('Engineer', () => {
     it('should create an object when initialized', () => {
         const engineer = new Engineer('David', '1', 'davidemp@gmail.com');
