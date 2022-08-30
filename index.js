@@ -21,7 +21,7 @@ function getTeamMemberInfo(memberRole) {
     }
 
     //an array of questions for user input
-    inquirer.promt([
+    inquirer.prompt([
         {
             message: `What is the ${memberRole}'s name? :`,
             name: "name",
@@ -43,68 +43,38 @@ function getTeamMemberInfo(memberRole) {
             type: 'input',
         }
     ]).then(function({name, id, email, info}) {
-        myTeam.push(helper.createNewEmployee(memberRole, name, id, email, info));
+        myTeam.push(helper.addTeamMember(memberRole, name, id, email, info));
         getEmployeeDetails();
     });
 }
 
 function getEmployeeDetails() {
-    inquirer.promt([{
+    inquirer.prompt([{
         message: 'Add additional team member? :',
         name: "member_role",
         type: 'list',
         choices: ['Engineer', 'Intern', 'Done']
     }]).then(function({member_role}) {
         if(member_role === 'Done') {
-            buildTeam
+            buildTeam();
         } else {
             getTeamMemberInfo(member_role);
         }
     });
 }
 
-
-// // TODO: Create a function to write README file
-// function writeToFile(data) {
-//     fs.writeFile('./testingReadME/README.md', generateMarkdown(data), err => {
-//         if (err) {
-//             console.log(err);
-//             return;
-//         } else {
-//             console.log('success');
-//         }
-
-//     })
-// }
-
-// TODO: Create a function to initialize app and store basic info
-function init(data) {
-    inquirer
-        .prompt(questions)
-        .then(answers => {
-        // const markdownData = generateMarkdown(answers);
-        writeToFile(answers);
-    })
-    .catch(err => {
-        console.log(err);
+function buildTeam() {
+    let teamPage = helper.renderTeamHTML(myTeam);
+    fs.writeFile(path.join(__dirname, 'dist', 'index.html'), teamPage, err => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log('Success!');
     });
-};
 
-// Function call to initialize app
-init();
+}
 
-
-// // TODO: Create a function to initialize app
-// function init() {
-//     inquirer
-//         .prompt(questions)
-//         .then(answers => {
-//         // const markdownData = generateMarkdown(answers);
-//         writeToFile(answers);
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     });
-// };
+getTeamMemberInfo('Manager');
 
 

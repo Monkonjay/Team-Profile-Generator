@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding-right: 0;
+}
+
+#header {
+    color:aliceblue;
+    text-align: center;
+    border-radius: 0%;
+}
+
+.employee {
+    width: 100%;
+}

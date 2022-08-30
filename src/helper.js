@@ -4,7 +4,7 @@ const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 
 // Helper function to create an instance of appropriate class based on the employee type.
-function createNewEmployee(employee_type, name, id, email, info){
+function addTeamMember(employee_type, name, id, email, info){
     switch (employee_type) {
         case 'Manager':
             return new Manager(name, id, email, info);
@@ -18,7 +18,7 @@ function createNewEmployee(employee_type, name, id, email, info){
 }
 
 // Helper function that takes in an array of `team` members and returns the generated HTML for the team.
-function generateTeamHTML(team) {
+function renderTeamHTML(team) {
     // Generate the HTML card for each of the team member.
     teamCardsHTML = '';
     for (const team_member of team) {
@@ -32,17 +32,25 @@ function generateTeamHTML(team) {
                 <meta charset="UTF-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-                <title>Team Roaster</title>
+                
+                <title>Team Generator</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+                <link rel="stylesheet" href="../dist/style.css"/>
             </head>
             <body>
-                <h1 class="header col-12 text-center">Team Roaster</h1>
-                <div class="row justify-content-center">
-                    ${teamCardsHTML}
+                <div id="header" class="card bg-info">
+                    <div class="card-header">
+                        <h1>My Team</h1>
+                    </div>
                 </div>
+
+
+                <div class="row justify-content-center">${teamCardsHTML}</div>
+                    
+                
             </body>
             </html>`;
 }
 
-exports.createNewEmployee = createNewEmployee;
-exports.generateTeamHTML = generateTeamHTML;
+exports.addTeamMember = addTeamMember;
+exports.renderTeamHTML = renderTeamHTML;
