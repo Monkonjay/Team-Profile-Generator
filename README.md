@@ -56,7 +56,7 @@ THEN I exit the application, and the HTML is generated
 ### Links
 
 - Solution URL: [Github Repo](https://github.com/Monkonjay/Team-Profile-Generator)
-- Video Demo: [Watch the Project Demo](https://your-live-site-url.com)
+- Video Demo: [Watch the Project Demo](https://drive.google.com/file/d/1Nwj9nJ-WAYhYJtTGj-rKq0FahtkuvglV/view)
 
 ## My process
 
@@ -71,7 +71,7 @@ THEN I exit the application, and the HTML is generated
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This was a full stack application. I learned working with Jest and testing the methods to determine the application's outcome before actually writing the code. Working with classes and inheritance was also fun and challenging. 
 
 
 
@@ -83,9 +83,6 @@ class Engineer extends Employee{
     }
 }
 ```
-
-
-
 
 ## Author
 
