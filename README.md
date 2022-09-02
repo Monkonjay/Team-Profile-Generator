@@ -57,6 +57,8 @@ THEN I exit the application, and the HTML is generated
 
 - Solution URL: [Github Repo](https://github.com/Monkonjay/Team-Profile-Generator)
 - Video Demo: [Watch the Project Demo](https://drive.google.com/file/d/1Nwj9nJ-WAYhYJtTGj-rKq0FahtkuvglV/view)
+- TDD Video : [Watch the Test Video ](https://drive.google.com/file/d/1qAgCVf86cv6kbiztIz5Zln99qZLy9Rdc/view)
+
 
 ## My process
 
